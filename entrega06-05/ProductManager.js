@@ -15,10 +15,21 @@ class Product {
 class ProductManager {
     #products
     #path
+
     constructor(path) {
         this.#products = []
         this.#path = path
         if (!fs.existsSync(this.#path)) return fs.writeFileSync(this.#path, "[]")
+        try {
+            const data = fs.readFileSync(this.#path, "utf-8");
+            this.#products = JSON.parse(data);
+        } catch (err) {
+            if (err.code === "ENOENT") {
+                fs.writeFileSync(this.#path, "[]");
+            } else {
+                throw err;
+            }
+        }
     }
     addProduct(title, description, price, thumbnail, code, stock) {
 
@@ -34,11 +45,11 @@ class ProductManager {
         return console.log("Producto Añadido")
     }
     getProducts() {
-        this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
+        //this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
         return console.log(this.#products)
     }
     getProductById(pid) {
-        this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
+        //this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
         if (this.#products.find(p => p.id === pid)) {
             const productFound = this.#products.find(p => p.id === pid)
             return console.log(productFound)
@@ -46,7 +57,7 @@ class ProductManager {
         return console.log("No existe un producto con ese id")
     }
     deleteProduct(pid) {
-        this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
+        //this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
         if (this.#products.find(p => p.id === pid)) {
             this.#products.splice(this.#products.indexOf(this.#products.find(p => p.id === pid)), 1)
             fs.writeFileSync(this.#path, JSON.stringify(this.#products))
@@ -56,8 +67,8 @@ class ProductManager {
         }
     }
     updateProduct(pid, k, v) {
-        this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
-        if(k == "id"){
+        //this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
+        if (k == "id") {
             return console.log("No puedes modificarle el id a un producto")
         } else if (this.#products.find(p => p.id === pid)) {
             const productFound = this.#products.find(p => p.id === pid)
@@ -82,7 +93,7 @@ const productManager = new ProductManager("./db/products.json")
 
 // productManager.getProducts()
 
-//productManager.getProductById(100)
+//productManager.getProductById(1)
 
 //productManager.deleteProduct(1)
 
