@@ -14,12 +14,12 @@ class ProductManager {
         this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
         if (title == undefined || description == undefined || price == undefined || code == undefined || stock == undefined || category == undefined) return { message: "Todos los campos son obligatorios. EXCEPTO THUMBNAIL" }
         if (this.#products.find(p => p.code === code)) return { message: "Ya existe un producto con este codigo" }
-        if(isNaN(Number(price)) || isNaN(Number(stock))) return {message: "el precio y el stock deben ser de valor numérico"}
+        if (isNaN(Number(price)) || isNaN(Number(stock))) return { message: "el precio y el stock deben ser de valor numérico" }
         if (isNaN(price) || isNaN(stock)) return { message: "El precio y el stock deben ser de valores numéricos" }
-        if(!Array.isArray(thumbnail)) return {message: "La propiedad 'thumbnail' debe ser un array de rutas de imágenes"}
+        if (!Array.isArray(thumbnail)) return { message: "La propiedad 'thumbnail' debe ser un array de rutas de imágenes" }
         const latestId = this.#products[this.#products.length - 1].id
         console.log(latestId)
-        
+
         const newProduct = new Product(latestId, title, description, Number(price), thumbnail, code, Number(stock), category, status)
         this.#products.push(newProduct)
         fs.writeFileSync(this.#path, JSON.stringify(this.#products))
@@ -52,13 +52,13 @@ class ProductManager {
             return { message: "No se encontró un producto con el id indicado" }
         }
     }
-    updateProduct(pid, k, v) {
+    updateProduct(pid, newValues) {
         this.#products = JSON.parse(fs.readFileSync(this.#path, "utf-8"))
-        if (k == "id") {
-            return { message: "No puedes modificarle el id a un producto" }
-        } else if (this.#products.find(p => p.id === pid)) {
+        if (newValues.id) return { message: "No puedes modificarle el id a un producto" }
+        else if (this.#products.find(p => p.id === pid)) {
             const productFound = this.#products.find(p => p.id === pid)
-            productFound[k] = v
+            Object.assign(productFound, newValues);
+            console.log(productFound)
             fs.writeFileSync(this.#path, JSON.stringify(this.#products))
             return { message: "Producto actualizado", productUpdated: productFound, success: true }
         } else {

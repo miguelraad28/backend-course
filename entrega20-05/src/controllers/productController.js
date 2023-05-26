@@ -17,7 +17,10 @@ const productController = {
         return res.json(result)
     },
     update: function(req, res) {
-        const { title, description, price, thumbnail, code, stock, category, status } = req.body
+        const pid = Number(req.params.pid)
+        const newValues = req.body
+        const result = productManager.updateProduct(pid, newValues)
+        return res.json(result)
     },
     create: function (req, res) {
         const { title, description, price, thumbnail, code, stock, category, status } = req.body
