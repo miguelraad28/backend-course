@@ -12,6 +12,7 @@ body{
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 .productCard{
     padding: 15px;
@@ -51,4 +52,41 @@ body{
     background-color:brown;
     color: white;
     border: 0;
+}
+.formContainer{
+    display: flex;
+    flex-direction: column;
+
+    padding: 15px;
+    margin: auto;
+    width: 300px;
+    background-color: antiquewhite;
+}
+.formContainer > form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.formContainer > form > input, textarea {
+    padding: 7px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 0;
+    width: 90%;
+}
+.greenButton{
+    padding: 7px 12px;
+    border-radius: 8px;
+    background-color: greenyellow;
+    cursor: pointer;
+    margin-top: 10px;
+    border: 0;
+    width: 100%;
+}
+#messageParagrahp{
+    text-align: center;
+    color: red;
+    font-size: 1.5em;
+    margin: 15px;
 }
