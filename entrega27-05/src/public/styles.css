@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.productsContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.productCard{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 150px;
+    border: 1px solid red;
+    gap: 5px;
+}
+.productDetailButton{
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 7px 12px;
+    border-radius: 12px;
+    background-color: bisque;
+    border: 0;
+}
+.productDetailContainer{
+    display: flex;
+    justify-content: center;
+
+}
+.productDetailCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid red;
+    gap: 5px;
+}
+.productAddToCartButton{
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 7px 12px;
+    border-radius: 12px;
+    background-color:brown;
+    color: white;
+    border: 0;
+}
