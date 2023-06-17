@@ -1,6 +1,6 @@
 const Product = require("../dao/models/Product")
 
-class ProductService {
+class ProductServices {
   async getProducts({limit = 10, page = 1, sort= {}, query= {}}) {
     const result = await Product.paginate(
       {},
@@ -28,6 +28,6 @@ class ProductService {
   }
 }
 
-const productServices = new ProductService();
+const productServices = new ProductServices();
 
 module.exports = productServices;

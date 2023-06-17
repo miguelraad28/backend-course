@@ -22,6 +22,12 @@ router.get("/", async (req, res) => {
 })
 // router.get("/:pid", productsServices.show)
 // router.put("/:pid", productsServices.update)
+router.get("/:pid", async (req, res) => {
+    const result = await productServices.getProduct(req.params.pid)
+    const product = {...result._doc}
+    
+    return res.render("productDetail", { product: product, pageTitle: "Product" })
+})
 router.get("/create", async (req, res) => {
     return res.render("createProduct", { pageTitle: "Create Product" })
 })
