@@ -1,0 +1,35 @@
+{{#if products}}
+<div class="productsContainer">
+    {{#each products}}
+    <div class="productCard">
+        <h3>{{this.title}}</h3>
+        <p>
+            {{this.description}}
+        </p>
+        <p>
+            $ {{this.price}}
+        </p>
+        <a href="/products/{{this._id}}"><button class="productDetailButton">VER DETALLE</button></a>
+        <form action="/carts/1/">
+            <button class="addToCartButton">AGREGAR AL CARRITO</button>
+        </form>
+    </div>
+
+    {{/each}}
+</div>
+<div>
+    <p style="text-align: center;">
+        {{totalPages}}
+    </p>
+
+    {{prevPage}}
+    {{#if hasPrevPage}}
+    <a style="text-decoration: none;" href="/products?page={{prevPage}}">⬅️</a>
+    {{/if}}
+    {{page}}
+    {{#if hasNextPage}}
+    <a disabled style="text-decoration: none;" href="/products?page={{nextPage}}">➡️</a>
+    {{/if}}
+    {{nextPage}}
+</div>
+{{/if}}
