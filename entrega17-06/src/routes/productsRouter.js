@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 // router.put("/:pid", productsServices.update)
 router.get("/:pid", async (req, res) => {
     const result = await productServices.getProduct(req.params.pid)
-    const product = {...result._doc}
+    const product = { ...result._doc }
     
     return res.render("productDetail", { product: product, pageTitle: "Product" })
 })

@@ -9,6 +9,14 @@ router.get("/", async (req, res) => {
     const result = await cartServices.getCarts()
     return res.json({ message: "Lista de carritos", carts: result })
 })
+router.get("/:cid", async (req, res) => {
+    const cid = req.params.cid
+    const result = await cartServices.getCart(cid)
+    const products = result._doc.products.map(product => product.toObject())
+    console.log(products)
+    const hayProductos = products.length > 0 ? true : false
+    return res.render("cartDetail", {p: products, hayProductos: hayProductos})
+})
 router.get("/new", async (req, res) => {
     const result = await cartServices.newCart()
     return res.json({ message: "Carrito creado", newCart: result })

@@ -5,6 +5,10 @@ class CartServices {
         const result = await Cart.find().populate("products.product")
         return result
     }
+    async getCart(cid) {
+        const result = await Cart.findById(cid).populate("products.product")
+        return result
+    }
     async newCart() {
         const newCart = await Cart.create({ products: [] })
         newCart.save()
