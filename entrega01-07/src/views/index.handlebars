@@ -1,0 +1,13 @@
+<h2>Bienvenido a mi horripilante index</h2>
+<a href="/products"><button class="productAddToCartButton">VER LOS PRODUCTOS</button></a>
+
+<a href="/realTimeProducts"><button class="greenButton">WEBSOCKETS PRODUCT FORM</button></a>
+
+<a href="/chat"><button class="productAddToCartButton">CHAT</button></a>
+
+<h3 style="padding-top: 15px;">TU CUENTA</h3>
+{{#if user}}
+<form action="/logout" method="post"><button type="submit" class="productAddToCartButton">LOGOUT</button></form>
+{{else}}
+<a href="/login"><button class="greenButton">LOGIN</button></a>
+{{/if}}

@@ -1,0 +1,27 @@
+<div>
+    <div class="formContainer">
+        <h3>CREAR PRODUCTO NUEVO</h3>
+        <form id="createNewProductFrom" action="/products/create" method="post">
+            <label>NOMBRE</label>
+            <input placeholder="NOMBRE DEL PRODUCTO" name="title" type="text">
+            <label>DESCRIPCION</label>
+            <textarea required placeholder="DESCRIPCIÓN" name="description"></textarea>
+            <label>IMAGEN</label>
+            <input required placeholder="MINIATURAS" name="thumbnail" type="text">
+            <label>STOCK</label>
+            <input required placeholder="STOCK" name="stock" type="number">
+            <label>PRECIO</label>
+            <input required placeholder="PRECIO" name="price" type="number">
+            <label>CODIGO</label>
+            <input required placeholder="CÓDIGO DE PRODUCTO" name="code" type="number">
+            <label>CATEGORIA</label>
+            <input required placeholder="CATEGORÍA" name="category" type="text">
+            <label>STATUS</label>
+            <input name="status" type="checkbox">
+            <button class="greenButton" type="submit">CREAR PRODUCTO</button>
+        </form>
+    </div>
+    {{#if message}}
+    <p id="messageParagrahp">{{message}}</p>
+    {{/if}}
+</div>
