@@ -76,8 +76,8 @@ app.post("/login", (req,res) => {
     const email = req.body.email
     const password = req.body.password
     if(email && password){
-        let rol = "client"
-        if(email === "miguelraad2020@gmail.com"){
+        let rol = "usuario"
+        if(email === "adminCoder@coder.com"){
             rol = "admin"
         }
         req.session.user = {email, password, rol}
